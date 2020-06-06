@@ -13,7 +13,7 @@ Feature: Edit information of account
 		Then verify "My Dashboard" is displayed
 		And verify "My Account" is displayed
 		When I click to Account Information link
-		
+		And 
 		
 
 
