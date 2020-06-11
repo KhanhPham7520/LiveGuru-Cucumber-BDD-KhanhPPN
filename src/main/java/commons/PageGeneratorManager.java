@@ -2,21 +2,21 @@ package commons;
 
 import org.openqa.selenium.WebDriver;
 
-import bankGuru.pageObjects.LoginPageObject;
-import bankGuru.pageObjects.RegisterPageObject;
+import liveGuru.HeaderPageObject;
+import liveGuru.HomePageObject;
+import liveGuru.LoginPageObject;
 
 public class PageGeneratorManager {
 
-	// Cấp phát việc khởi tạo đối tượng cho Home Page
-
-	// Cấp phát việc khởi tạo đối tượng cho Register Page
-	public static RegisterPageObject getRegisterPage(WebDriver driver) {
-		return new RegisterPageObject(driver);
+	public static HeaderPageObject getHeaderPage(WebDriver driver) {
+		return new HeaderPageObject(driver);
 	}
 
-	// Cấp phát việc khởi tạo đối tượng cho Login Page
+	public static HomePageObject getHomePage(WebDriver driver) {
+		return new HomePageObject(driver);
+	}
+
 	public static LoginPageObject getLoginPage(WebDriver driver) {
 		return new LoginPageObject(driver);
 	}
-
 }

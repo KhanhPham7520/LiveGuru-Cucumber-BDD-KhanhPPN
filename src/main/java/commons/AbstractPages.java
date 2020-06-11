@@ -1,7 +1,5 @@
 package commons;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -15,10 +13,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import bankGuru.pageObjects.FooterMyAccountPageObject;
-import bankGuru.pageObjects.HomePageObject;
-import bankGuru.pageUIs.AbstractBankPageUI;
 
 public abstract class AbstractPages {
 
@@ -38,81 +32,81 @@ public abstract class AbstractPages {
 		super();
 	}
 
-	public boolean isNameSortedDescending(WebDriver driver) {
-		ArrayList<String> arrayList = new ArrayList<>();
-
-		List<WebElement> elementList = findElementsByXpath(driver, AbstractBankPageUI.PRODUCT_TITLE);
-
-		for (WebElement element : elementList) {
-			arrayList.add(element.getText());
-		}
-
-		// copy to new arraylist for sorting in code
-		ArrayList<String> sortedList = new ArrayList<>();
-		for (String child : arrayList) {
-			sortedList.add(child);
-		}
-
-		// Collections.reverse(arrayList);
-		return sortedList.equals(arrayList);
-
-	}
-
-	public boolean isNameSortedAscending(WebDriver driver) {
-		ArrayList<String> arrayList = new ArrayList<>();
-
-		List<WebElement> elementList = findElementsByXpath(driver, AbstractBankPageUI.PRODUCT_TITLE);
-
-		for (WebElement element : elementList) {
-			arrayList.add(element.getText());
-		}
-		// copy to new arraylist for sorting in code
-		ArrayList<String> sortedList = new ArrayList<>();
-		for (String child : arrayList) {
-			sortedList.add(child);
-		}
-		Collections.sort(arrayList);
-		return sortedList.equals(arrayList);
-
-	}
-
-	public boolean isPriceSortedAscending(WebDriver driver) {
-		ArrayList<Float> arrayList = new ArrayList<Float>();
-
-		List<WebElement> elementList = findElementsByXpath(driver, AbstractBankPageUI.PRODUCT_TITLE);
-
-		for (WebElement element : elementList) {
-			arrayList.add(Float.parseFloat(element.getText().replace("$", "").replace(",", "").trim()));
-		}
-
-		// copy to new arraylist for sorting in code
-		ArrayList<Float> sortedList = new ArrayList<Float>();
-		for (Float child : arrayList) {
-			sortedList.add(child);
-		}
-		Collections.sort(arrayList);
-		return sortedList.equals(arrayList);
-
-	}
-
-	public boolean isPriceSortedDescending(WebDriver driver) {
-		ArrayList<Float> arrayList = new ArrayList<Float>();
-
-		List<WebElement> elementList = findElementsByXpath(driver, AbstractBankPageUI.PRODUCT_TITLE);
-
-		for (WebElement element : elementList) {
-			arrayList.add(Float.parseFloat(element.getText().replace("$", "").replace(",", "").trim()));
-		}
-		// copy to new arraylist for sorting in code
-		ArrayList<Float> sortedList = new ArrayList<Float>();
-		for (Float child : arrayList) {
-			sortedList.add(child);
-		}
-
-		// Collections.reverse(arrayList);
-		return sortedList.equals(arrayList);
-
-	}
+	// public boolean isNameSortedDescending(WebDriver driver) {
+	// ArrayList<String> arrayList = new ArrayList<>();
+	//
+	// List<WebElement> elementList = findElementsByXpath(driver, AbstractBankPageUI.PRODUCT_TITLE);
+	//
+	// for (WebElement element : elementList) {
+	// arrayList.add(element.getText());
+	// }
+	//
+	// // copy to new arraylist for sorting in code
+	// ArrayList<String> sortedList = new ArrayList<>();
+	// for (String child : arrayList) {
+	// sortedList.add(child);
+	// }
+	//
+	// // Collections.reverse(arrayList);
+	// return sortedList.equals(arrayList);
+	//
+	// }
+	//
+	// public boolean isNameSortedAscending(WebDriver driver) {
+	// ArrayList<String> arrayList = new ArrayList<>();
+	//
+	// List<WebElement> elementList = findElementsByXpath(driver, AbstractBankPageUI.PRODUCT_TITLE);
+	//
+	// for (WebElement element : elementList) {
+	// arrayList.add(element.getText());
+	// }
+	// // copy to new arraylist for sorting in code
+	// ArrayList<String> sortedList = new ArrayList<>();
+	// for (String child : arrayList) {
+	// sortedList.add(child);
+	// }
+	// Collections.sort(arrayList);
+	// return sortedList.equals(arrayList);
+	//
+	// }
+	//
+	// public boolean isPriceSortedAscending(WebDriver driver) {
+	// ArrayList<Float> arrayList = new ArrayList<Float>();
+	//
+	// List<WebElement> elementList = findElementsByXpath(driver, AbstractBankPageUI.PRODUCT_TITLE);
+	//
+	// for (WebElement element : elementList) {
+	// arrayList.add(Float.parseFloat(element.getText().replace("$", "").replace(",", "").trim()));
+	// }
+	//
+	// // copy to new arraylist for sorting in code
+	// ArrayList<Float> sortedList = new ArrayList<Float>();
+	// for (Float child : arrayList) {
+	// sortedList.add(child);
+	// }
+	// Collections.sort(arrayList);
+	// return sortedList.equals(arrayList);
+	//
+	// }
+	//
+	// public boolean isPriceSortedDescending(WebDriver driver) {
+	// ArrayList<Float> arrayList = new ArrayList<Float>();
+	//
+	// List<WebElement> elementList = findElementsByXpath(driver, AbstractBankPageUI.PRODUCT_TITLE);
+	//
+	// for (WebElement element : elementList) {
+	// arrayList.add(Float.parseFloat(element.getText().replace("$", "").replace(",", "").trim()));
+	// }
+	// // copy to new arraylist for sorting in code
+	// ArrayList<Float> sortedList = new ArrayList<Float>();
+	// for (Float child : arrayList) {
+	// sortedList.add(child);
+	// }
+	//
+	// // Collections.reverse(arrayList);
+	// return sortedList.equals(arrayList);
+	//
+	// }
 
 	public void sleepInSecond() {
 		try {
@@ -172,11 +166,6 @@ public abstract class AbstractPages {
 	public void clickToElement(WebDriver driver, String locator) {
 		waitToElementClickable(driver, locator);
 		findElementByXpath(driver, locator).click();
-	}
-
-	public void clickToDynamicInputTypeElement(WebDriver driver, String... values) {
-		waitToElementClickable(driver, AbstractBankPageUI.DYNAMIC_TEXTBOX_BANKGURU, values);
-		findElementByXpath(driver, AbstractBankPageUI.DYNAMIC_TEXTBOX_BANKGURU, values).click();
 	}
 
 	public void clickToElement(WebDriver driver, String locator, String... values) {
@@ -370,15 +359,6 @@ public abstract class AbstractPages {
 
 	}
 
-	public void selectDynamicItemInDropdown(WebDriver driver, String valueItem, String... values) {
-		waitToElementClickable(driver, AbstractBankPageUI.DYNAMIC_SELECT, values);
-		select = new Select(findElementByXpath(driver, AbstractBankPageUI.DYNAMIC_SELECT, values));
-
-		clickToElement(driver, AbstractBankPageUI.DYNAMIC_SELECT, values);
-		select.selectByVisibleText(valueItem);
-
-	}
-
 	public String getTextElement(WebDriver driver, String locator) {
 		waitToElementVisible(driver, locator);
 		return findElementByXpath(driver, locator).getText();
@@ -437,18 +417,6 @@ public abstract class AbstractPages {
 		WebElement hoverElement = findElementByXpath(driver, locator, value);
 		actions = new Actions(driver);
 		actions.moveToElement(hoverElement).perform();
-	}
-
-	public FooterMyAccountPageObject openFooterMyAccountPage(WebDriver driver) {
-		waitToElementVisible(driver, AbstractBankPageUI.FOOTER_MY_ACCOUNT_LINK);
-		clickToElement(driver, AbstractBankPageUI.FOOTER_MY_ACCOUNT_LINK);
-		return null;
-	}
-
-	public HomePageObject openHomePage(WebDriver driver) {
-		waitToElementVisible(driver, AbstractBankPageUI.HOME_PAGE_LINK);
-		clickToElement(driver, AbstractBankPageUI.HOME_PAGE_LINK);
-		return null;
 	}
 
 	public void selectItemInCustomDropdownList(String parentXpath, String childXpath, String expectedItem) {
@@ -515,22 +483,19 @@ public abstract class AbstractPages {
 	public void highlightElement(WebDriver driver, WebElement element) {
 		jsExcutor = (JavascriptExecutor) driver;
 		String originalStyle = element.getAttribute("style");
-		jsExcutor.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, "style",
-				"border: 3px solid red; border-style: dashed;");
+		jsExcutor.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, "style", "border: 3px solid red; border-style: dashed;");
 		// sleepInSecond();
-		jsExcutor.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, "style",
-				originalStyle);
+		jsExcutor.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, "style", originalStyle);
 
+	}
+
+	public void inputToTextbox(WebDriver driver, String locator, String enterValue) {
+		waitToElementVisible(driver, locator);
+		sendKeyToElement(driver, locator, enterValue);
 	}
 
 	public void switchToPopUpModal(WebDriver driver) {
 		driver.switchTo().activeElement();
-	}
-
-	public HomePageObject clickIntoLogOutLink(WebDriver driver) {
-		waitToElementVisible(driver, AbstractBankPageUI.HEADER_LOG_OUT_LINK);
-		clickToElement(driver, AbstractBankPageUI.HEADER_LOG_OUT_LINK);
-		return null;
 	}
 
 }
